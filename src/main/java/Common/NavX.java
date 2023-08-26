@@ -17,4 +17,8 @@ public class NavX {
       gyroscope.zeroYaw();
   }
 
+  public static void zeroDisplacement() {
+    gyroscope.resetDisplacement();
+}
+
 }

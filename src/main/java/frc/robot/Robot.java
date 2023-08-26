@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
 
-    m_robotContainer.drivetrain.resetEncoders();
+    RobotContainer.getDrivetrain().resetEncoders();
 
     m_autonomousCommand = sendablechooser.getSelected();
 
