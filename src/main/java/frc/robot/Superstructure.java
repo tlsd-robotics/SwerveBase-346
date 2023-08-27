@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.PneumaticHub;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
@@ -11,6 +12,7 @@ public class Superstructure {
     public Superstructure() {
         pneumatics.enableCompressorDigital();
         pdp.clearStickyFaults();
-        
+
+        CameraServer.startAutomaticCapture("USB_CAM0", 0);
     }
 }

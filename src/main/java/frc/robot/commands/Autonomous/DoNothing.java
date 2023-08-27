@@ -6,6 +6,9 @@ package frc.robot.commands.Autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+// My glorious creation. A command that does absolutely nothing. This is used as a default autonomous routine to skip any movements. 
+// Pretty much just something to fill in a slot instead of just setting the thing to null.
+
 public class DoNothing extends CommandBase {
   /** Creates a new DoNothing. */
   public DoNothing() {

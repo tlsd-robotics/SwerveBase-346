@@ -14,6 +14,15 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 public class Robot extends TimedRobot {
 
+  /*
+   * This is robot. Where the robot does its thing. Main things to know in here are
+   * Adding new autonomous routines can be done by the sendableChooser and adding options. 
+   * Reference 2023 Charged-Up-Revised Temporary branch for making auto commands here.
+   * 
+   * Next is the init and periodic functions. They run on initaliztion and periodicly (every 20ms).
+   * These are good for startup routines, such as reseting the motor encoders, or providing dashboard values and charts periodicly.
+   */
+
   public static SendableChooser<Command> sendablechooser = new SendableChooser<Command>();
   private Command m_autonomousCommand;
 

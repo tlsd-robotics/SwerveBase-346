@@ -8,6 +8,15 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import frc.lib.config.SwerveModuleConstants;
 
+/*
+Welcome to the constants file. Every single value the robot uses to configure and set stuff up will be in here.
+As the name implies, these values are all constant, as they will not, and should not, change. Each category is 
+labeled by the class time and curly brackets. This makes it easier to manage and find values when referencing from other files.
+
+Example, to get the Drive controller id, you would do "Constants.Controls.DRIVE_CONTROLLER".
+*/
+
+
 public final class Constants {
   public static final class Controls {
     public static final int DRIVE_CONTROLLER = 0;

@@ -19,6 +19,14 @@ import frc.lib.util.CANSparkMaxUtil.Usage;
 import frc.robot.Constants;
 import frc.lib.config.CTREConfigs;
 
+/*
+ * This is the swerve Drive modules. Idealy you won't need to make any changes in here but just in case ill run through it once.
+ * 
+ * It looks very intimidating, but this is where most of that giant list of constants are used. Each of those values are 
+ * passed into there respective field. This is also where the motor set speed and angle functions are created that are used
+ * within the drivetrain subsystem.
+ */
+
 public class SwerveModule {
   public int moduleNumber;
   private Rotation2d lastAngle;
