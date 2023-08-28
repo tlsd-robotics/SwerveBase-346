@@ -33,8 +33,12 @@ public class LogitechF310  {
 //==============================================================================
 //============================== Constructor ===================================
 
-    public LogitechF310(int port) {
-        this.joy = new Joystick(port);
+    /**
+     * Create Logitech F310 Gamepad object
+     * @param port
+     */
+    public LogitechF310(int portID) {
+        this.joy = new Joystick(portID);
     }
 
 //==============================================================================
@@ -57,64 +61,162 @@ public class LogitechF310  {
 
 //==============================================================================
 //================================ Getters =====================================
-    
+    /**
+     * 
+     * @return Gamepad Object
+     */
     public Joystick getJoy() {
         return joy;
     }
+
+    /**
+     * 
+     * @return Returns A button object
+     */
     public JoystickButton getButtonA() {
         return buttonA;
     }
+
+    /**
+     * 
+     * @return Returns B button Object
+     */
     public JoystickButton getButtonB() {
         return buttonB;
     }
+
+    /**
+     * 
+     * @return Returns X button object
+     */
     public JoystickButton getButtonX() {
         return buttonX;
     }
+
+    /**
+     * 
+     * @return Returns Y button object
+     */
     public JoystickButton getButtonY() {
         return buttonY;
     }
+
+    /**
+     * 
+     * @return Returns Left bumper button object
+     */
     public JoystickButton getButtonL1() {
         return buttonL1;
     }
+
+    /**
+     * 
+     * @return Returns right bumper button object
+     */
     public JoystickButton getButtonR1() {
         return buttonR1;
     }
+
+    /**
+     * 
+     * @return Return select button object
+     */
     public JoystickButton getButtonSelect() {
         return buttonSelect;
     }
+
+    /**
+     * 
+     * @return Returns Right joystick click button object
+     */
     public JoystickButton getButtonR3() {
         return buttonR3;
     }
+
+    /**
+     * 
+     * @return Returns Left joystick click button object
+     */
     public JoystickButton getButtonL3() {
         return buttonL3;
     }
+
+    /**
+     * 
+     * @return Returns D-PAD Up button object
+     */
     public POVButton getDPadUp() {
         return dPadUp;
     }
+
+    /**
+     * 
+     * @return Returns D-PAD Right button object
+     */
     public POVButton getDPadRight() {
         return dPadRight;
     }
+
+    /**
+     * 
+     * @return Returns D-PAD Down button
+     */
     public POVButton getDPadDown() {
         return dPadDown;
     }
+
+    /**
+     * 
+     * @return Returns D-PAD Left Button
+     */
     public POVButton getDPadLeft() {
         return dPadLeft;
     }
+
+    /**
+     * 
+     * @return Returns Leftside X axis joystick value
+     */
     public double getLeftXAxis() {
         return joy.getRawAxis(leftXAxis);
     }
+
+    /**
+     * 
+     * @return Returns Leftside Y axis joystick value
+     */
     public double getLeftYAxis() {
         return joy.getRawAxis(leftYAxis);
     }
+
+    /**
+     * 
+     * @return Returns Rightside X axix joystick value
+     */
     public double getRightXAxis() {
         return joy.getRawAxis(rightXAxis);
     }
+
+    /**
+     * 
+     * @return Returns Rightside Y Axis joystick value
+     */
     public double getRightYAxis() {
         return joy.getRawAxis(rightYAxis);
     }
+
+    /**
+     * 
+     * @return Returns left trigger button value. <hr> For future reference, create a button form of the trigger for that mode
+     */
     public double getLeftTrigger() {
         return joy.getRawAxis(leftTrigger);
     }
+
+    /**
+     * 
+     * @return Returns Right trigger button value. <hr> For future reference, create a button form of the trigger for that mode
+     */
     public double getRightTrigger() {
         return joy.getRawAxis(rightTrigger);
     }

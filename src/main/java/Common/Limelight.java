@@ -10,6 +10,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  */
 public class Limelight {
 
+  // List of LED modes and their corresponding network table values
   public enum LedModes {
     LED_ON(3),
     LED_OFF(1);
@@ -31,6 +32,13 @@ public class Limelight {
   
 
   // =================== Limelight Constructor ======================
+  /**
+   * Create limelight object. Multiple limelights can be used simultaneously
+   * @param NetworkTableName
+   * @param DefaultPipeline
+   * @param distanceFromGroundInches
+   * @param angleDegrees
+   */
   public Limelight(String NetworkTableName, LimelightPipeline DefaultPipeline, double distanceFromGroundInches, double angleDegrees) {
 
       this.table = NetworkTableInstance.getDefault().getTable(NetworkTableName);
@@ -46,20 +54,36 @@ public class Limelight {
   // ========================================================================
   // ======================== Setters and Getters ===========================
 
+  /**
+   * Sets liemlight's pipeline to the one provided
+   * @param pipeline
+   */
   public void setPipeline(LimelightPipeline pipeline){
       this.table.getEntry("pipeline").setNumber(pipeline.getId());
       setLedOn(pipeline.getLedState());
   }
 
+  /**
+   * Toggle on the LEDs on limelight
+   * @param isOn True = On, False = Off
+   */
   public void setLedOn(boolean isOn) {
       ledMode.setNumber(isOn ? LedModes.LED_ON.id : LedModes.LED_OFF.id);
   }
 
+    /**
+     * April tags are refered to using an ID value. 
+     * @return The ID value of targeted apriltag
+     */
     public double getTagID() {
       NetworkTableEntry tid = table.getEntry("tid");
       return tid.getDouble(0.0);
   }
 
+  /**
+   * Apriltags support 3D targeting.
+   * @return Yaw value relative to robot
+   */
   public double getTagYaw() {
       NetworkTableEntry camtran = table.getEntry("campose");
       double[] temp = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
@@ -101,36 +125,72 @@ public class Limelight {
       return a;
   }
 
+  /**
+   * 
+   * @return ID of current pipeline
+   */
   public Integer getPipelineInt(){
     NetworkTableEntry pipeline = table.getEntry("pipeline");
     Integer pipe = (int) pipeline.getDouble(0.0);
     return pipe;
 }
 
+/**
+ * tcornxy are the X and Y coordinates for the bounding box (the yellow box surroudning a targeted objectS)
+ * @return tcornxy Array
+ */
 public double[] getCorners() {
   return table.getEntry("tcornxy").getDoubleArray(new double[] {});
 }
 
+/**
+ * Using the targets height, limelights angle and height, calculate distance in inches.
+ * @param limelight
+ * @param target
+ * @return Distance from target's hypotenuse to limelight in inches
+ */
 public double distanceFromTargetInInches(Limelight limelight, Target target) {
   return (target.getHeightFromGroundsInInches() - limelight.distanceFromGroundInches)/Math.tan(limelight.getAngle() + limelight.getVerticalError());
 }
 
+/**
+ *  Using the targets height, limelights angle and height, calculate distance in meters.
+ * @param limelight
+ * @param target
+ * @return Distance from target's hypotenuse to limelight in meters
+ */
 public double distanceFromTargetInMeters(Limelight limelight, Target target) {
   return Units.inchesToMeters(distanceFromTargetInInches(limelight, target));
 }
 
+/**
+ * @param limelight
+ * @return Networktable object
+ */
 public NetworkTable getNetworkTable(Limelight limelight) {
   return table;
 }
 
+/**
+ * 
+ * @return LED mode.
+ */
 public NetworkTableEntry getLedMode() {
     return ledMode;
   }
 
+/**
+ * 
+ * @return Get distance from ground for limelight
+ */
 public double getDistanceFromGroundInches() {
   return distanceFromGroundInches;
 }
 
+/**
+ * 
+ * @return Get angle at which limelight is mounted.
+ */
 public double getAngle() {
   return angle;
 }

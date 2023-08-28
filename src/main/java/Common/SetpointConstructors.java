@@ -1,7 +1,5 @@
 package Common;
 
-import java.util.ArrayList;
-
 import Common.ConstraintConstructors.PitchConstraint;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
@@ -13,53 +11,59 @@ public class SetpointConstructors {
         private final double angle;
         private final double tolerance;
     
+        /**
+         * Create new pitch setpoint. In reality it can be used for anything, not just pitch. 
+         * @param angleDegrees
+         * @param toleranceDegrees
+         */
         public PitchSetpoint(double angleDegrees, double toleranceDegrees) {
           this.angle = angleDegrees;
           this.tolerance = toleranceDegrees;
         }
     
+        /**
+         * @return Returns the setpoint angle in degrees.
+         */
         public double getSetpointAngleDegrees() {
           return angle;
         }
         
+        /**
+         * @return Returns the tolerance in degrees.
+         */
         public double getToleranceDegrees() {
           return tolerance;
         }
-
-      
     }
 
     public static class DoubleSolenoidGroupSetpoint {
-
-      private static ArrayList<DoubleSolenoidGroupSetpoint> solenoidSetpoints;
 
       Value cylinderValueOne;
       Value cylinderValueTwo;
       PitchConstraint constraint;
 
+      /**
+       * Stores 2 solenoid values at once for use with the doublesolenoidgroup object's set function
+       * @param forCylinderOne
+       * @param forCylinderTwo
+       */
       public DoubleSolenoidGroupSetpoint(Value forCylinderOne, Value forCylinderTwo) {
         this.cylinderValueOne = forCylinderOne;
         this.cylinderValueTwo = forCylinderTwo;
-
-        solenoidSetpoints.add(this);
-      }
-
-      public DoubleSolenoidGroupSetpoint(Value forCylinderOne, Value forCylinderTwo, PitchConstraint constraint) {
-        this.cylinderValueOne = forCylinderOne;
-        this.cylinderValueTwo = forCylinderTwo;
-        this.constraint = constraint;
       }
       
+      /**
+       * @return Returns the value for solenoid one
+       */
       public Value getCylinderValueOne() {
         return cylinderValueOne;
       }
 
+      /**
+       * @return Returns the value for solenoid two
+       */
       public Value getCylinderValueTwo() {
         return cylinderValueTwo;
-      }
-
-      public static ArrayList<DoubleSolenoidGroupSetpoint> getSetpoints() {
-        return solenoidSetpoints;
       }
     }
 
