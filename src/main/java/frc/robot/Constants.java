@@ -19,14 +19,14 @@ Example, to get the Drive controller id, you would do "Constants.Controls.DRIVE_
 
 public final class Constants {
   public static final class Controls {
-    public static final int DRIVE_CONTROLLER = 0;
+    public static final int DRIVE_CONTROLLER = 1;
     public static final int GAMEPAD = 1;
     public static final int ARCADE = 2;
   }
 
   public static final class Superstructure {
-    public static final int PNEUMATICS_HUB_ID = 0;
-    public static final int POWER_DISTRIBUTION_ID = 1;
+    public static final int PNEUMATICS_HUB_ID = 1;
+    public static final int POWER_DISTRIBUTION_ID = 2;
   }
 
   public static final class AutoConstants {

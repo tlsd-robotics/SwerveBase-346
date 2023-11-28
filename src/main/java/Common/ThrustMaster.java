@@ -8,7 +8,24 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class ThrustMaster  {
 
-    Joystick joy;
+    Joystick joystick;
+
+    JoystickButton trigger;
+    JoystickButton middle;
+    JoystickButton left;
+    JoystickButton right;
+    JoystickButton leftFrontLeft;
+    JoystickButton leftFrontMiddle;
+    JoystickButton leftFrontRight;
+    JoystickButton leftBackRight;
+    JoystickButton leftBackMiddle;
+    JoystickButton leftBackLeft; 
+    JoystickButton rightFrontRight;
+    JoystickButton rightFrontMiddle;
+    JoystickButton rightFrontLeft;
+    JoystickButton rightBackLeft;
+    JoystickButton rightBackMiddle;
+    JoystickButton rightBackRight;
 
 //==============================================================================
 //=============================== Joystick IDs ===================================
@@ -43,30 +60,33 @@ public class ThrustMaster  {
 //============================== Constructor ===================================
 
     public ThrustMaster(int port) {
-        this.joy = new Joystick(port);
+        this.joystick = new Joystick(port);
+
+        configureButtons(this.joystick);
     }
+
 
 //==============================================================================
 //============================ Create Buttons ==================================
+    private void configureButtons(Joystick joy) {
+        this.trigger = new JoystickButton(joy, TRIGGER);
+        this.middle = new JoystickButton(joy, MIDDLE);
+        this.left = new JoystickButton(joy, LEFT);
+        this.right = new JoystickButton(joy, RIGHT);
+        this.leftFrontLeft = new JoystickButton(joy, LEFT_FRONT_LEFT);
+        this.leftFrontMiddle = new JoystickButton(joy, LEFT_FRONT_MIDDLE);
+        this.leftFrontRight = new JoystickButton(joy, LEFT_FRONT_RIGHT);
+        this.leftBackRight = new JoystickButton(joy, LEFT_BACK_RIGHT);
+        this.leftBackMiddle = new JoystickButton(joy, LEFT_BACK_MIDDLE);
+        this.leftBackLeft = new JoystickButton(joy, LEFT_BACK_LEFT);
+        this.rightFrontRight = new JoystickButton(joy, RIGHT_FRONT_RIGHT);
+        this.rightFrontMiddle = new JoystickButton(joy, RIGHT_FRONT_MIDDLE);
+        this.rightFrontLeft = new JoystickButton(joy, RIGHT_FRONT_LEFT);
+        this.rightBackLeft = new JoystickButton(joy, RIGHT_BACK_LEFT);
+        this.rightBackMiddle = new JoystickButton(joy, RIGHT_BACK_MIDDLE);
+        this.rightBackRight = new JoystickButton(joy, RIGHT_BACK_RIGHT);
 
-    JoystickButton trigger = new JoystickButton(joy, TRIGGER);
-    JoystickButton middle = new JoystickButton(joy, MIDDLE);
-    JoystickButton left = new JoystickButton(joy, LEFT);
-    JoystickButton right = new JoystickButton(joy, RIGHT);
-    JoystickButton leftFrontLeft = new JoystickButton(joy, LEFT_FRONT_LEFT);
-    JoystickButton leftFrontMiddle = new JoystickButton(joy, LEFT_FRONT_MIDDLE);
-    JoystickButton leftFrontRight = new JoystickButton(joy, LEFT_FRONT_RIGHT);
-    JoystickButton leftBackRight = new JoystickButton(joy, LEFT_BACK_RIGHT);
-    JoystickButton leftBackMiddle = new JoystickButton(joy, LEFT_BACK_MIDDLE);
-    JoystickButton leftBackLeft = new JoystickButton(joy, LEFT_BACK_LEFT);
-    JoystickButton rightFrontRight = new JoystickButton(joy, RIGHT_FRONT_RIGHT);
-    JoystickButton rightFrontMiddle = new JoystickButton(joy, RIGHT_FRONT_MIDDLE);
-    JoystickButton rightFrontLeft = new JoystickButton(joy, RIGHT_FRONT_LEFT);
-    JoystickButton rightBackLeft = new JoystickButton(joy, RIGHT_BACK_LEFT);
-    JoystickButton rightBackMiddle = new JoystickButton(joy, RIGHT_BACK_MIDDLE);
-    JoystickButton rightBackRight = new JoystickButton(joy, RIGHT_BACK_RIGHT);
-
-
+    }
 
 //==============================================================================
 //================================ Getters =====================================
@@ -75,7 +95,7 @@ public class ThrustMaster  {
      * @return Joystick Object
      */
     public Joystick getJoy() {
-        return joy;
+        return joystick;
     }
 
     /**
@@ -194,28 +214,28 @@ public class ThrustMaster  {
      * @return Get joystick's X (horizontal) raw axis value
      */    
     public double getX() {
-        return joy.getRawAxis(xAxis);
+        return joystick.getRawAxis(xAxis);
     }
 
     /**
      * @return Get joystick's Y (vertical) raw axis value
      */    
     public double getY() {
-        return joy.getRawAxis(yAxis);
+        return joystick.getRawAxis(yAxis);
     }
 
     /**
      * @return Get joystick's Z (twist) raw axis value
      */    
     public double getZ() {
-        return joy.getRawAxis(zAxis);
+        return joystick.getRawAxis(zAxis);
     }
 
     /**
      * @return Get joystick's throttle value mapped to a range of <code>0 -> 1</code>
      */    
     public double getThrottle() {
-        return Utilities.map(joy.getRawAxis(throttleAxis), 1, -1, 0, 1);
+        return Utilities.map(joystick.getRawAxis(throttleAxis), 1, -1, 0, 1);
     }
 
     /**
@@ -223,7 +243,7 @@ public class ThrustMaster  {
      * @return Get joystick HAT X value. 
      */    
     public double getHatX() {
-        return joy.getRawAxis(hatXAxis);
+        return joystick.getRawAxis(hatXAxis);
     }
 
     /**
@@ -231,7 +251,7 @@ public class ThrustMaster  {
      * @return Get joystick HAT Y value. 
      */  
     public double getHatY() {
-        return joy.getRawAxis(hatYAxis);
+        return joystick.getRawAxis(hatYAxis);
     }
 
 }

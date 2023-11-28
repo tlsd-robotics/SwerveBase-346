@@ -32,8 +32,8 @@ public class RobotContainer {
   private final Superstructure superstructure = new Superstructure();
 
   private final ThrustMaster driveJoy = new ThrustMaster(Constants.Controls.DRIVE_CONTROLLER);
-  private final LogitechF310 gamepad = new LogitechF310(Constants.Controls.GAMEPAD);
-  private final ArcadeControls arcade = new ArcadeControls(Constants.Controls.ARCADE);
+  // private final LogitechF310 gamepad = new LogitechF310(Constants.Controls.GAMEPAD);
+  // private final ArcadeControls arcade = new ArcadeControls(Constants.Controls.ARCADE);
 
   HashMap <String, Command> eventMap = new HashMap<String, Command>();
 
@@ -67,16 +67,16 @@ public class RobotContainer {
 /**
  * @return Logitech gamepad instance
  */
-  public LogitechF310 getGamepad() {
-    return gamepad;
-  }
+  // public LogitechF310 getGamepad() {
+  //   return gamepad;
+  // }
 
 /**
  * @return Arcade controller instance
  */
-  public ArcadeControls getArcade() {
-    return arcade;
-  }
+  // public ArcadeControls getArcade() {
+  //   return arcade;
+  // }
 
 /**
  * @return Superstructure instance
